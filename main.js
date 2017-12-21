@@ -16,6 +16,7 @@ function question (value, callback = () => {}) {
 
 const findFiles = require('./lib/find-files.js');
 const copyFiles = require('./lib/copy-files.js');
+const deleteFiles = require('./lib/delete-files.js');
 
 (() => {
   question('Source folder: ', source => {
@@ -23,7 +24,19 @@ const copyFiles = require('./lib/copy-files.js');
       if (error) return console.log(error);
       question('Destination folder: ', dist => {
         copyFiles(files, dist, (error, status) => {
-          console.log(error ? error : status);
+          if (error) return error;
+          question('Do you want to delete the source folder? (Yes/No): ', response => {
+            if (/^y(es)?$/i.test(response)) {
+              deleteFiles(source, (error, status) => {
+                if (error) return error;
+                console.log('Operation is completed. The source folder was deleted')
+              });
+            } else {
+              console.log('Operation is completed. The source folder is not deleted');
+            }
+
+            process.exit(0);
+          });
         });
       });
     });
