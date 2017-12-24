@@ -1,2 +1,6 @@
+app/bower
 node_modules
+dist
+server
+.vscode
 .idea
