@@ -2,6 +2,9 @@
   "name": "express_example",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "server": "nodemon server/app.js"
+  },
   "devDependencies": {
     "browser-sync": "^2.18.7",
     "del": "^2.2.2",
@@ -14,10 +17,21 @@
     "gulp-pug": "^3.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^2.0.1",
-    "run-sequence": "^1.2.2"
+    "run-sequence": "^1.2.2",
+    "eslint": "^4.13.1",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1"
   },
   "dependencies": {
+    "express": "^4.16.2",
+    "formidable": "^1.1.1",
     "jquery": "^1.11.3",
+    "mongoose": "^4.13.8",
+    "nconf": "^0.10.0",
+    "nodemailer": "^4.4.1",
     "normalize.css": "^7.0.0",
     "qtip2": "^3.0.3"
   }

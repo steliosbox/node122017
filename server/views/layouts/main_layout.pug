@@ -9,17 +9,15 @@ html(lang="ru-RU")
       .main-content
         //- Шапка
         include ../common/header.pug
-        .container  
+        .container
           //- Левые блоки
           aside.sidebar
             //- Навигация
             include ../common/navigate.pug
             //- Контакты
-            include ../common/contacts.pug      
+            include ../common/contacts.pug
           //- Изменяемый контент
           .variable-content
             //- Изменяемая часть каждой страницы
             block content
-    include ../common/footer.pug  
-        
-         
+    include ../common/footer.pug
