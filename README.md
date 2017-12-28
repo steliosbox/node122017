@@ -1,21 +1,23 @@
-# Домашнее задание курса Node.js (3 и 4)
-![Скриншот проекта](https://loftschool.com/uploads/course_logos/nodejs.svg?v=1513152963369)
+## Домашнее задание курса Node.js 3
 
->Для запуска:
+### Для запуска:
 
-0. git clone https://bitbucket.org/krabaton/node-homework
-1. npm i (yarn)
-2. gulp
+##### 1) Скапируйте все файлы проекта
 
->Для сборки проекта под Express(Koa.js) (папка server):
+``` git clone https://bitbucket.org/krabaton/node-homework ```
 
-  gulp build
+##### 2) Установите все зависимости
 
->Для запуска:
+``` npm i ```
 
-  npm run server
+##### 3) Соберите проекта
 
-### Дополнительная информация
+``` npm run build ```
 
-Серверная часть реализованная на Express.js.
-Данные хранить данных используется mongoDB в связке с mongoose.
+##### 4) Запустите сервера:
+
+``` npm run server ```
+
+##### Дополнительная информация
+
+Серверная часть реализованная на Express.js. Для хранения данных используется mongoDB в связке с [mongoose](http://mongoosejs.com/) и онлайн сервисом [mLab](https://mlab.com/).
