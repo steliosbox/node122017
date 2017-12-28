@@ -23,8 +23,9 @@ block content
               .project-desc= project.description
 
           //- Добавить проект
-          li.projects-item.add-new-item
-            a.add-new-link#add-new-item(href="#")
-              .add-new-text Добавить проект
+          if (auth)
+            li.projects-item.add-new-item
+              a.add-new-link#add-new-item(href="#")
+                .add-new-text Добавить проект
 
   include ../common/popup.pug

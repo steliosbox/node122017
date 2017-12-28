@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const config = require('../config');
 
 mongoose.Promise = global.Promise;
@@ -19,6 +20,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, '../dist')));
+
+app.use(session({
+  secret: 'nodejs',
+  key: 'key',
+  cookie: {
+    path: '/',
+    httpOnly: true,
+    maxAge: null
+  },
+  saveUninitialized: true,
+  resave: false
+}));
+
 app.use('/', require('./routers/index'));
 
 app.use((req, res, next) => {
