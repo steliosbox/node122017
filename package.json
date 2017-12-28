@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "server": "nodemon server/app.js"
+    "server": "nodemon server/app.js",
+    "build": "gulp build"
   },
   "devDependencies": {
-    "browser-sync": "^2.18.7",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
@@ -14,7 +14,6 @@
     "gulp-csso": "^2.0.0",
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
-    "gulp-pug": "^3.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^2.0.1",
     "run-sequence": "^1.2.2",
@@ -30,9 +29,9 @@
     "formidable": "^1.1.1",
     "jquery": "^1.11.3",
     "mongoose": "^4.13.8",
-    "nconf": "^0.10.0",
     "nodemailer": "^4.4.1",
     "normalize.css": "^7.0.0",
+    "pug": "^2.0.0-rc.4",
     "qtip2": "^3.0.3"
   }
 }

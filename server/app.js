@@ -1,10 +1,12 @@
+const path = require('path');
 const express = require('express');
 const app = express();
-const path = require('path');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const config = require('../config');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://hw3:122017node@ds131997.mlab.com:31997/hw3', {
+mongoose.connect(config.mongodb, {
   useMongoClient: true
 });
 
@@ -12,6 +14,9 @@ app.disable('x-powered-by');
 
 app.set('views', path.join(__dirname, 'views/pages'));
 app.set('view engine', 'pug');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use('/', require('./routers/index'));
