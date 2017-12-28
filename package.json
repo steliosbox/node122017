@@ -1,23 +1,38 @@
 {
-  "name": "node122017",
+  "name": "express_example",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "Stelios Baglaridis",
-  "license": "ISC",
-  "dependencies": {
-    "node": "^9.2.0"
+    "server": "nodemon server/app.js",
+    "build": "gulp build"
   },
   "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^2.0.0",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.1",
+    "run-sequence": "^1.2.2",
     "eslint": "^4.13.1",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "formidable": "^1.1.1",
+    "jquery": "^1.11.3",
+    "mongoose": "^4.13.8",
+    "nodemailer": "^4.4.1",
+    "normalize.css": "^7.0.0",
+    "pug": "^2.0.0-rc.4",
+    "qtip2": "^3.0.3"
   }
 }

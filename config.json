@@ -1,0 +1,14 @@
+{
+  "mongodb": "mongodb://hw3:122017node@ds131997.mlab.com:31997/hw3",
+  "email": "homer.test01@gmail.com",
+  "subject": "Message from Homer \"contact me\" form",
+  "nodemailer": {
+    "host": "smtp.gmail.com",
+    "port": 465,
+    "secure": true,
+    "auth": {
+      "user":"homer.test01@gmail.com",
+      "pass": "homertest"
+    }
+  }
+}
