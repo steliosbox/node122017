@@ -1,0 +1,61 @@
+{
+  "projects": [
+    {
+      "timestamp": "1514398575000",
+      "name": "loftblog.ru",
+      "url": "http://loftblog.ru",
+      "description": "Сайт с уроками по web разработке",
+      "image": "loftblog.jpg"
+    },
+    {
+      "timestamp": "1514398576000",
+      "name": "itloft.ru",
+      "url": "http://itloft.ru",
+      "description": "Сайт агенства интернет решений itloft",
+      "image": "itloft.jpg"
+    },
+    {
+      "timestamp": "1514398577000",
+      "name": "landingsloft.ru",
+      "url": "http://landingsloft.ru",
+      "description": "Сайт по разработке лендингов с гарантией",
+      "image": "landingsloft.jpg"
+    },
+    {
+      "timestamp": "1514398578000",
+      "name": "kovalchuk.us",
+      "url": "http://kovalchuk.us",
+      "description": "Личный сайт Дмитрия Ковальчука",
+      "image": "kovalchuk.png"
+    },
+    {
+      "timestamp": "1514398579000",
+      "name": "loftschool.com",
+      "url": "http://loftschool.com",
+      "description": "Школа онлайн образования",
+      "image": "loftschool.png"
+    },
+    {
+      "timestamp": 1515217266156,
+      "name": "test",
+      "url": "test",
+      "description": "test",
+      "image": "1515217266151.png"
+    },
+    {
+      "timestamp": 1515217341864,
+      "name": "test2",
+      "url": "test2",
+      "description": "test2",
+      "image": "1515217341860.jpg"
+    }
+  ],
+  "users": [
+    {
+      "login": "admin",
+      "password": "123456"
+    }
+  ],
+  "emails": [
+  ]
+}
