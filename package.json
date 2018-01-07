@@ -1,19 +1,20 @@
 {
   "name": "node122017",
   "version": "1.0.0",
+  "private": true,
   "description": "",
-  "main": "main.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "eslint": "eslint --ext .js .vue --ignore-path .gitignore ."
   },
   "keywords": [],
   "author": "Stelios Baglaridis",
   "license": "ISC",
   "dependencies": {
-    "node": "^9.2.0"
+    "node": "^9.3.0"
   },
   "devDependencies": {
-    "eslint": "^4.13.1",
+    "eslint": "^4.15.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
