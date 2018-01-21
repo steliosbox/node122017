@@ -5,6 +5,7 @@ const router = require('express').Router();
 // -----------------------------------------------------------------------------
 // Routes to api
 router.use('/login', require('../api/login.js'));
+router.use('/authFromToken', require('../api/authFromToken.js'));
 // -----------------------------------------------------------------------------
 // If requested route is not served, send warning to the client
 router.use('/', (req, res, next) => {

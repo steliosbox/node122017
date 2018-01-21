@@ -1,10 +1,11 @@
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
-  // getting secret from user's ip 
+  console.log('req body', req.body.access_token);
+  // getting secret from user's ip
   const secret = req.userIp;
   // getting token from cookie
-  const token = req.cookies.access_token;
+  const token = req.body.access_token || req.cookies.access_token;
   // callback of jwt.verigy method
   const callback = (err, decoded) => {
     // If an error occurred, set status 406

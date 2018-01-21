@@ -15,35 +15,33 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
-
-passport.use('local.login', 
+// local login
+passport.use('local.login',
   new LocalStrategy(options, (req, username, password, done) => {
     User.findOne({ username })
       .then(result => {
         if (result.validPassword(password)) {
           return result;
-        } else done(null, false);
+        }
+        else done(null, false);
       })
       .then(user => {
-          const payload = { username: user.username, id: user._id };
-          const secret = req.userIp;
-          
-          jwt.sign(payload, secret, (err, token) => {
-            if (err) throw err;
+        const payload = { id: user._id };
 
-            payload.access_token = token;
-            payload.image = user.image;
-            payload.firstName = user.firstName; 
-            payload.surName = user.surName;
-            payload.middleName = user.middleName;
-            payload.permissionId = user.permissionId;
-            payload.permission = user.permission;
-              
-            done(null, payload);
-          });
+        jwt.sign(payload, process.env.SECRET_KEY, (err, token) => {
+          if (err) throw err;
+
+          user.access_token = token;
+          user.save()
+            .then(newUser => {
+              done(null, newUser);
+            })
+            .catch(err => done(err));
+        });
       })
       .catch(err => done(err));
   })
 );
+
 
 module.exports = passport;

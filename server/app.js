@@ -1,13 +1,11 @@
 // -----------------------------------------------------------------------------
 // importing file with middleware config
 const app = require('./config/middleware.config');
-// importing custom middlewares
-const requestIp = require('./middlewares/request-ip-middleware.js');
 // -----------------------------------------------------------------------------
 // redirecting all API requests to './router/api.routes.js'
-app.use('/api', requestIp, require('./router/api.routes.js'));
+app.use('/api', require('./router/api.routes.js'));
 // redirecting all NOT API requests to './router/html.routes.js'
-app.use('*', requestIp, require('./router/html.routes.js'));
+app.use('*', require('./router/html.routes.js'));
 // -----------------------------------------------------------------------------
 // middleware for all errors
 app.use((err, req, res, next) => {
@@ -30,5 +28,8 @@ app.use((err, req, res, next) => {
 app.set('port', process.env.PORT || 8080);
 // start listening for connections
 app.listen(app.get('port'), () => {
+  if (process.env.IP) {
+    return console.log('Server running on', process.env.IP);
+  }
   console.log('Server running on port', app.get('port'));
 });

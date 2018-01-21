@@ -29,7 +29,8 @@ const UserSchema = new Schema({
       U: { type: Boolean, default: false },
       D: { type: Boolean, default: false }
     }
-  }
+  },
+  access_token: { type: String }
 });
 
 // Hashing and saving password
@@ -38,9 +39,9 @@ UserSchema.methods.setPassord = pwd => {
   this.password = bCrypt.hashSync(pwd, salt, null);
 };
 // Compare password with the hash saved in db
-UserSchema.methods.validPassword = function (pwd) {
+UserSchema.methods.validPassword = function(pwd) {
   return bCrypt.compareSync(pwd, this.password);
 };
 
-// exporting user Schema 
+// exporting user Schema
 module.exports = mongoose.model('user', UserSchema);

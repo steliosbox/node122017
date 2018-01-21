@@ -16,7 +16,7 @@ const mongoose = require('./mongoose.config');
 // Initializing express
 const app = express();
 // -----------------------------------------------------------------------------
-// Variables 
+// Variables
 const publicDir = 'public_html';
 const faviconDir = `${publicDir}/images`;
 const faviconName = 'favicon.ico';
@@ -31,7 +31,7 @@ const sessionOptions = {
   resave: false,
   saveUninitialized: true,
   cookie: {
-    // secure: true,
+    secure: true,
     maxAge: expires
   }
 };
@@ -52,7 +52,7 @@ app
   // 'express-session' middleware
   .use(session(sessionOptions))
   // 'passport' middleware
-  .use(passport.initialize({ userProperty: 'payload' }))
+  .use(passport.initialize())
   .use(passport.session());
 
 module.exports = app;
