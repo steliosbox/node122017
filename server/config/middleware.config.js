@@ -37,7 +37,6 @@ const sessionOptions = {
 };
 // -----------------------------------------------------------------------------
 app
-  .enable('trust proxy')
   .disable('x-powered-by')
   // 'morgan' middleware
   .use(morgan('dev'))
@@ -53,7 +52,7 @@ app
   // 'express-session' middleware
   .use(session(sessionOptions))
   // 'passport' middleware
-  .use(passport.initialize())
+  .use(passport.initialize({ userProperty: 'payload' }))
   .use(passport.session());
 
 module.exports = app;
