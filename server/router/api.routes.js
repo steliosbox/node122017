@@ -9,7 +9,8 @@ router.use('/saveNewUser', require('../api/saveNewUser.js'));
 router.use('/authFromToken', require('../api/authFromToken.js'));
 router.use('/getNews', require('../api/getNews.js'));
 router.use('/saveUserImage', require('../api/saveUserImage.js'));
-router.use('/updateUser', require('../api/updateUser'));
+router.use('/updateUser', require('../api/updateUser.js'));
+router.use('/getUsers', require('../api/getUsers.js'));
 // -----------------------------------------------------------------------------
 // If requested route is not served, send warning to the client
 router.use('/', (req, res, next) => {
