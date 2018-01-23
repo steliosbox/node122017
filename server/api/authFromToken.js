@@ -3,6 +3,21 @@ const passport = require('../config/passport.config.js');
 const User = require('../models/user.model.js');
 const jwt = require('jsonwebtoken');
 
+const queryFunc = user => {
+  return {
+    access_token: user.access_token,
+    id: user._id,
+    username: user.username,
+    password: user.password,
+    firstName: user.firstName,
+    surName: user.surName,
+    middleName: user.middleName,
+    image: user.image,
+    permission: user.permission,
+    permissionId: user.permissionId
+  };
+};
+
 router.post('/', (req, res, next) => {
   const token = req.cookies.access_token || req.body.access_token;
   // Verifing tokent
@@ -32,8 +47,9 @@ router.post('/', (req, res, next) => {
             .then(newUser => {
               // save new token in cookie
               res.cookie('access_token', newUser.access_token);
+              const query = queryFunc(newUser);
               // send user's data to client
-              res.json(newUser);
+              res.json(query);
             })
             // throw an error if occurred
             .catch(err => {
