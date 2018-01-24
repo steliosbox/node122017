@@ -1,6 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const jwt = require('jsonwebtoken');
+const uuidv1 = require('uuid/v1');
 
 const User = require('../models/user.model.js');
 
@@ -78,11 +79,12 @@ passport.use('local.register', new LocalStrategy(options, (req, username, passwo
     }
     // -------------------------------------------------------------------
     // Destructuring all data from req.body to a variables
-    const { firstName, middleName, surName } = req.body;
+    const { firstName, middleName, surName, permission } = req.body;
     // Preparing object with the data for saving into database
-    const query = { username, firstName, middleName, surName };
+    const query = { username, firstName, middleName, surName, permission };
     // Hashing password
     query.password = User.hashPassword(password);
+    query.permissionId = uuidv1();
     // Create new user
     new User(query)
       .save() // saving to database

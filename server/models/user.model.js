@@ -9,7 +9,7 @@ const UserSchema = new Schema({
   middleName: { type: String, default: '' },
   surName: { type: String, default: '' },
   image: { type: String, default: 'assets/img/no-user-image-big.png' },
-  permissionId: { type: Number, default: 1 },
+  permissionId: { type: String, required: true, unique: true },
   permission: {
     chat: {
       C: { type: Boolean, default: false },

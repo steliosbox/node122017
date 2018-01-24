@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const News = require('../models/news.model');
-const User = require('../models/user.model');
+const News = require('../models/news.model.js');
+const User = require('../models/user.model.js');
 
 const queryFunc = (news, user) => {
   return {
@@ -20,12 +20,22 @@ const queryFunc = (news, user) => {
   };
 };
 
-router.get('/', (req, res, next) => {
-  News.find()
+router.post('/', (req, res, next) => {
+  new News(req.body)
+    .save()
+    // get all news
+    .then(result => {
+      return News.find()
+        .then(posts => {
+          return posts;
+        })
+        // If an error occurred, call next with error message
+        .catch(err => next(err));
+    })
+    // get post's authors
     .then(posts => {
-      console.log('length', posts.length);
       // if there is no news, return empty array
-      if (!posts.length) return res.json(posts);
+      if (posts.length < 1) return res.json(posts);
 
       // Initializing an empty array
       const array = [];
@@ -33,11 +43,9 @@ router.get('/', (req, res, next) => {
       const length = posts.length - 1;
       // starting the cycle
       posts.forEach((post, index) => {
-        console.log(length, index);
         // extracting author's data
         User.findById(post.userId)
           .then(user => {
-            // Preparing object with data & pushing to an array
             array.push(queryFunc(post, user));
             // comparing post's index with an length
             // if equal, sending data to client

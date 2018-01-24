@@ -20,20 +20,34 @@ const queryFunc = (news, user) => {
   };
 };
 
-router.get('/', (req, res, next) => {
-  News.find()
-    .then(posts => {
-      console.log('length', posts.length);
-      // if there is no news, return empty array
-      if (!posts.length) return res.json(posts);
+router.delete('/:id', (req, res, next) => {
+  const id = req.params.id;
 
+  News.findById(id)
+
+    .then(post => {
+      return post.remove()
+        .then(() => true)
+        .catch(err => next(err));
+    })
+
+    .then(() => {
+      return News.find()
+        .then(posts => posts)
+        .catch(err => next(err));
+    })
+
+    .then(posts => {
+      // if there is no news, return empty array
+      if (posts.length < 1) return res.json(posts);
+      
       // Initializing an empty array
       const array = [];
       // save the number of records and reduce by 1
       const length = posts.length - 1;
+      
       // starting the cycle
       posts.forEach((post, index) => {
-        console.log(length, index);
         // extracting author's data
         User.findById(post.userId)
           .then(user => {
@@ -43,11 +57,9 @@ router.get('/', (req, res, next) => {
             // if equal, sending data to client
             if (length === index) res.json(array);
           })
-          // If an error occurred, call next with error message
           .catch(err => next(err));
       });
     })
-    // If an error occurred, call next with error message
     .catch(err => next(err));
 });
 
