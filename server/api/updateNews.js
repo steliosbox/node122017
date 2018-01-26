@@ -53,7 +53,6 @@ router.put('/:id', (req, res, next) => {
               })
               .catch(err => next(err));
           });
-
         })
         .catch(err => next(err));
     })

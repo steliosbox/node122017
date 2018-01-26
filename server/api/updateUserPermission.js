@@ -16,7 +16,6 @@ router.put('/:id', (req, res, next) => {
         }
       }
 
-      user.permission = user.permission;
       user.permissionId = uuidv1();
       user.save()
         .catch(err => next(err));

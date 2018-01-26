@@ -40,12 +40,12 @@ router.delete('/:id', (req, res, next) => {
     .then(posts => {
       // if there is no news, return empty array
       if (posts.length < 1) return res.json(posts);
-      
+
       // Initializing an empty array
       const array = [];
       // save the number of records and reduce by 1
       const length = posts.length - 1;
-      
+
       // starting the cycle
       posts.forEach((post, index) => {
         // extracting author's data

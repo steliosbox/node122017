@@ -20,7 +20,7 @@ const queryFunc = user => {
 
 router.post('/', (req, res, next) => {
   const token = req.cookies.access_token || req.body.access_token;
-  // Verifing tokent
+  // Verifying token
   jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
     // Throw error if occurred. Set status 406
     if (err) {
@@ -31,8 +31,7 @@ router.post('/', (req, res, next) => {
     User.findOne({ _id: decoded.id })
       .then(result => {
         // throw an error if no matches found
-        if (!result)
-          throw new Error('No user found!');
+        if (!result) throw new Error('No user found!');
         // if user found go to next then
         return result;
       })
@@ -41,6 +40,7 @@ router.post('/', (req, res, next) => {
         const payload = { id: user._id };
         // create new token
         jwt.sign(payload, process.env.SECRET_KEY, (err, newToken) => {
+          if (err) return next(err);
           // update current's user token
           user.access_token = newToken;
           user.save()
@@ -52,16 +52,10 @@ router.post('/', (req, res, next) => {
               res.json(query);
             })
             // throw an error if occurred
-            .catch(err => {
-              err.status = 406;
-              next(err);
-            });
+            .catch(err => next(err));
         });
       })
-      .catch(err => {
-        err.status = 406;
-        next(err);
-      });
+      .catch(err => next(err));
   });
 });
 

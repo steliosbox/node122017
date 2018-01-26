@@ -33,8 +33,7 @@ router.put('/:id', (req, res, next) => {
         const pwd = user.password;
         if (old && !User.comparePasswordSync(old, pwd)) {
           return res.json({ message: 'Password is not correct' });
-        }
-        else {
+        } else {
           delete query.oldPassword;
           query.password = User.hashPasswordSync(query.password);
         }

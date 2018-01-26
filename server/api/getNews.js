@@ -33,7 +33,6 @@ router.get('/', (req, res, next) => {
       const length = posts.length - 1;
       // starting the cycle
       posts.forEach((post, index) => {
-        console.log(length, index);
         // extracting author's data
         User.findById(post.userId)
           .then(user => {

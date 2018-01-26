@@ -26,10 +26,7 @@ router.post('/', (req, res, next) => {
     // get all news
     .then(result => {
       return News.find()
-        .then(posts => {
-          return posts;
-        })
-        // If an error occurred, call next with error message
+        .then(posts => posts)
         .catch(err => next(err));
     })
     // get post's authors

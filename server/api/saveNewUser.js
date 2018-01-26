@@ -11,8 +11,6 @@ router.post('/', (req, res, next) => {
     // sent to the client that is 'Unknown error occurred'
     if (!user && !message) return res.json({ message: 'Unknown error occurred' });
     // ----------------------------------------------------------------------------
-    // set 'expires' for cookie
-    const expires = 1000 * 60 * 30; // 30 min
     // set cookie on the client
     res.cookie('access_token', user.access_token, {});
     res.json(user);

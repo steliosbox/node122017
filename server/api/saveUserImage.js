@@ -35,8 +35,7 @@ router.post('/:id', (req, res, next) => {
             if (err) throw err;
           });
         }
-      }
-      catch (err) {
+      } catch (err) {
         // call next with error message
         return next(err);
       }
@@ -71,8 +70,7 @@ router.post('/:id', (req, res, next) => {
           res.json({ path: src });
         });
       }
-    }
-    catch (err) {
+    } catch (err) {
       // call next with error message
       return next(err);
     }
