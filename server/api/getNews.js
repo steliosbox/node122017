@@ -23,7 +23,6 @@ const queryFunc = (news, user) => {
 router.get('/', (req, res, next) => {
   News.find()
     .then(posts => {
-      console.log('length', posts.length);
       // if there is no news, return empty array
       if (!posts.length) return res.json(posts);
 

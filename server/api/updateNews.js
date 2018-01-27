@@ -41,7 +41,6 @@ router.put('/:id', (req, res, next) => {
 
           // starting the cycle
           posts.forEach((post, index) => {
-            console.log(index, length);
             // extracting author's data
             User.findById(post.userId)
               .then(user => {
