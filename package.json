@@ -9,7 +9,7 @@
   },
   "main": "server/app.js",
   "scripts": {
-    "eslint": "eslint --ext .js .vue --ignore-path .gitignore .",
+    "eslint": "eslint --ext .js .vue .",
     "server": "nodemon"
   },
   "keywords": [],

@@ -22,12 +22,12 @@ const queryFunc = (user) => {
   };
 };
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
+passport.deserializeUser(function (id, done) {
+  User.findById(id, function (err, user) {
     done(err, user);
   });
 });
@@ -38,8 +38,7 @@ passport.use('local.login',
       .then(result => {
         if (result.validPassword(password)) {
           return result;
-        }
-        else done(null, false);
+        } else done(null, false);
       })
       .then(user => {
         const payload = { id: user._id };
@@ -70,8 +69,7 @@ passport.use('local.register', new LocalStrategy(options, (req, username, passwo
       }
       // else call next with error message
       return done(err);
-    }
-    else if (user) {
+    } else if (user) {
       // Else if user already reported, send json response to the client.
       // That check is in case if in mongoose schema
       // the username is not set to unique = true.

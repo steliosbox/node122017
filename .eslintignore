@@ -1,0 +1,6 @@
+/public_html
+/node_modules
+/views
+.gitignore
+package.json
+package-lock.json

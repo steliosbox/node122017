@@ -34,13 +34,13 @@ const UserSchema = new Schema({
 });
 
 // Hashing and saving password
-UserSchema.methods.setPassord = function(pwd) {
+UserSchema.methods.setPassord = function (pwd) {
   const salt = bCrypt.genSaltSync(10);
   return bCrypt.hashSync(pwd, salt, null);
 };
 
 // Compare password with the hash saved in db
-UserSchema.methods.validPassword = function(pwd) {
+UserSchema.methods.validPassword = function (pwd) {
   return bCrypt.compareSync(pwd, this.password);
 };
 
@@ -51,8 +51,7 @@ module.exports.hashPassword = pwd => {
   try {
     const salt = bCrypt.genSaltSync(10);
     return bCrypt.hashSync(pwd, salt);
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err);
     return false;
   }
@@ -61,8 +60,7 @@ module.exports.hashPassword = pwd => {
 module.exports.comparePasswordSync = (pwd, hash) => {
   try {
     return bCrypt.compareSync(pwd, hash);
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err);
     return false;
   }
@@ -72,8 +70,7 @@ module.exports.hashPasswordSync = pwd => {
   try {
     const salt = bCrypt.genSaltSync(10);
     return bCrypt.hashSync(pwd, salt);
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err);
     return false;
   }
